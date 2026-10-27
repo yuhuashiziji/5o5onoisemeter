@@ -1,132 +1,103 @@
-# 5o5o噪音计 1.7 版本说明与使用指南
+5o5o Noise Meter 1.7 — Release Notes and User Guide
+Version: 1.7
+Documentation date: October 24, 2026
 
-版本：1.7  
-说明日期：2026年10月24日
-
-5o5o噪音计是一款用于观察声音频率、记录噪声变化和保留现场资料的安卓应用。通过实时频谱、频率历史、截图、声音录音和现场录像，帮助用户比较不同时间、不同位置的噪声情况。
-
-## 一、从1.5升级到1.7，有哪些变化？
-
-以下按1.5至1.7期间的开发与修复记录汇总，包含中间版本的累计改进；并非所有项目都首次加入于1.7。
-
-### 1. 首页更方便观察
-
-- 增加特别版界面，将实时dB(A)读数、主峰频率、实时频谱和频率历史集中展示，常用操作更容易找到。
-- 调整配色名称：铁灰金属观测改为“特别版”，经典配色改为“专业版”，经典绿改为“荧光专业版”。
-- 荧光专业版的瀑布图与频谱曲线使用相呼应的颜色。
-- 首页瀑布图增加双指缩放操作，便于放大查看频率历史。
-- 特别版精简读数下方文字，保留“A计权估算”说明。
-
-### 2. 读数与主峰的计算方式更加统一
-
-- 特别版首页的声级估算采用A计权处理；视频模式与特别版首页使用相同的A计权算法和校准偏移。
-- 视频中的主峰频率与首页采用相同的全频主峰选择规则，减少不同页面因计算口径不同而产生的差异。
-- 视频的“dB+”和“dB-”调整为每次增加或减少2 dB，并与首页共用校准偏移。
-- 保留已有校准设置。安装1.7后，读数仍会随环境变化；“曾在某环境校准到36 dB(A)”不意味着任何地方都固定显示36。
-
-### 3. 视频记录更加完整
-
-- 进入视频页面先预览，点击“开始”后才正式录像，可先调整取景再记录。
-- 可以选择是否显示分贝、低频图谱和日期时间，并将选中的内容叠加到导出的MP4中。
-- 调整视频画面方向与渲染处理，修复画面旋转、镜像和叠加区域重叠的相关问题。
-- 将“翻转”和“闪光”移至开始按钮两侧，修正窄屏下按钮靠近或超出屏幕边缘的问题。
-- 删除画幅切换功能，统一录像输出为720×1280竖屏MP4。
-- 优化停止录像后的收尾与保存流程，减少等待；实际耗时仍受手机、片段长度和存储状态影响。
-
-### 4. 图片和视频增加应用水印
-
-- 视频预览及导出的录像画面增加“5o5o噪音计”水印。
-- 导出的截图左下角增加“5o5o噪音计”水印，便于辨认记录来源。
-
-### 5. 修复容易影响记录的故障
-
-- 修复麦克风启停、页面切换和后台恢复中的资源冲突，降低录制闪退或采集异常的风险。
-- 修复快速反复开始、停止录音时，上一段文件尚未保存完成就开始下一段的问题。
-- 修复录像过程中返回页面可能影响临时文件保存的问题；保存中再次返回会提示等待。
-- 修复音视频编码启动时间不同可能丢失首批数据的问题，改善视频开头的完整性。
-- 修复录制中切换镜头后停止按钮、计时及相机状态的相关问题。
-- 增加极短视频、文件写入失败和截图内存不足等情况下的处理，避免将未完成片段当作正常视频导出。
-- 关于页面统一显示实际安装版本号1.7。
-
-## 二、第一次打开怎么用？
-
-1. 打开应用，允许使用麦克风。第一次进入视频时，再允许使用相机。旧版安卓如询问存储权限，也需要允许才能保存文件。
-2. 把手机放在待测位置，不要遮挡麦克风孔。尽量减少手部摩擦、说话和风吹手机的干扰。
-3. 等待几秒，观察读数、频谱和频率历史。
-4. 根据需要点“截图”“录音”或“视频”保留记录。
-
-打开应用并不代表已经开始保存录音；进入视频页面也不代表已经开始录像。
-
-## 三、首页上的数字和图是什么意思？
-
-| 内容 | 怎么理解 |
-| --- | --- |
-| dB(A)大数字 | A计权处理并叠加校准偏移后的声级估算，用于观察整体变化。 |
-| 主峰频率Hz | 当前比较突出的频率。Hz表示频率，不表示音量、方向或距离。 |
-| 实时频谱 | 显示不同频率的相对强弱。横向看频率，纵向看dBFS。 |
-| 频率历史／瀑布图 | 按时间保留频率分布，便于查看声音是否持续、是否反复启停。 |
-
-频谱上的dBFS与上方的dB(A)不是同一种读数，不需要相等。A计权会降低低频在总读数中的权重，排查低频时应同时观察频谱，并保留声音记录。
-
-首页与视频使用相同的计算口径，但在不同时间采样，环境变化仍可能让瞬时数字不同。视频低频小图仅显示0–1 kHz，全频主峰可能高于1 kHz，因此主峰标注不一定落在小图显示范围内。
-
-## 四、如何截图、录音和录像？
-
-### 截图
-
-等待显示稳定，点击“截图”，保存当时的界面为PNG图片。需要仔细看图时，可先点“暂停”，截图后点“继续”。
-
-### 录音
-
-在首页点击“录音”开始；结束时点击“停止”，等待保存完成。录音输出为WAV文件。保存上一段时，请等待按钮恢复后再开始下一段。
-
-“暂停”用于暂停显示，不会代替录音的“停止”。需要连续录音时，请保持应用在前台；进入其他页面或切到后台可能结束并保存当前片段。
-
-### 录像
-
-1. 首页点击“视频”，先确认取景和画面方向。
-2. 按需要勾选分贝、低频图谱和日期时间。
-3. 点击红色“开始”，看到录制状态后保持手机稳定。
-4. 结束时再次点击圆形按钮，等待保存完成并返回首页。
-
-“翻转”用于切换前后镜头；录制中切换会保存当前片段，再开始新片段，因此可能得到多个视频文件。“闪光”需要手机当前镜头支持补光。
-
-录制中按返回会结束并保存；保存期间请等待，不要强制关闭应用。已经调好校准的手机，不要随意点击“dB+”或“dB-”，因为它们也会改变首页读数。
-
-## 五、保存的文件在哪里？
-
-打开系统相册或文件管理器，在手机内部存储中查找：
-
-| 文件 | 文件夹 | 格式 |
-| --- | --- | --- |
-| 截图 | Pictures/5o5o噪音计 | PNG |
-| 声音录音 | Music/5o5o噪音计 | WAV |
-| 现场录像 | Movies/5o5o噪音计 | MP4 |
-
-文件名通常以“5o5o_”开头。找不到时，可在文件管理器中搜索该前缀。分享、重命名和分类整理可通过系统相册或文件管理器完成。应用的采集记录保存在本机，不自动上传服务器。
-
-## 六、从1.5升级前后需要注意什么？
-
-- 先备份重要截图、录音和视频。升级时优先覆盖安装，不要为了升级先卸载或清除应用数据。
-- 覆盖安装需要包名及签名身份一致。若提示“应用未安装”或签名冲突，不要直接卸载旧版，应先确认安装包来源和升级方式。
-- 升级后检查麦克风、相机权限，以及原有主题和校准设置。换手机后需要重新核对校准，不能直接认为旧手机参数同样准确。
-- 手机麦克风和音频处理各有差异，本应用适合观察、记录和比较变化，不能替代经校准的专业声级计，也不能只凭频率和dB(A)确定声源的位置或距离。
-- 本轮验证覆盖一部荣耀Android16手机的主要流程，其他机型和系统仍可能存在兼容差异。
-
-## 七、常见问题
-
-**为什么数字不动？** 先检查是否暂停了显示，以及是否允许麦克风权限。关闭其他正在占用麦克风的应用后，再重新进入。
-
-**为什么视频黑屏或闪光没反应？** 检查相机权限和其他应用是否占用相机；部分前置镜头没有补光灯。先保存记录，再重新进入视频页面尝试。
-
-**为什么停止后还要等？** 应用需要完成音视频收尾并保存文件，等待时间与片段长度及手机状态有关。看到保存完成后再进行下一次操作。
-
-**保存失败怎么办？** 检查剩余存储空间和权限，保留错误信息。不要立即卸载或清除数据，以免删除仍暂存在应用中的文件。
+5o5o Noise Meter is an Android application for observing sound frequencies, recording changes in noise, and documenting on-site conditions. Its real-time spectrum, frequency history, screenshots, audio recording, and video recording help users compare noise at different times and locations.
+1. What Changed Between Versions 1.5 and 1.7?
+The following summary covers development and fixes made between versions 1.5 and 1.7, including cumulative improvements from intermediate releases. Not every feature listed was first introduced in version 1.7.
+1.1 A Home Screen That Makes Observation Easier
+- Added the Special Edition interface, bringing the real-time dB(A) reading, dominant frequency, real-time spectrum, and frequency history together, with easier access to common controls.
+- Renamed the color themes: “Iron Gray Metallic Observation” is now “Special Edition,” “Classic” is now “Professional Edition,” and “Classic Green” is now “Fluorescent Professional Edition.”
+- Updated the Fluorescent Professional Edition so that the spectrogram and spectrum curve use coordinated colors.
+- Added pinch-to-zoom to the home-screen spectrogram for closer inspection of frequency history.
+- Simplified the text below the Special Edition reading while retaining the “A-weighted estimate” label.
+1.2 More Consistent Sound Level and Dominant Frequency Calculations
+- The Special Edition home screen uses A-weighting for sound level estimation. Video mode uses the same A-weighting algorithm and calibration offset.
+- Video mode and the home screen now use the same full-spectrum dominant frequency selection rules, reducing differences caused by inconsistent calculation methods.
+- The “dB+” and “dB−” controls in video mode now increase or decrease the calibration offset by 2 dB per tap. This offset is shared with the home screen.
+- Existing calibration settings are preserved. After installing version 1.7, readings will still change with the environment. Having calibrated the app to 36 dB(A) in one environment does not mean it should display 36 everywhere.
+1.3 More Complete Video Recording
+- Opening the video screen now starts a preview. Recording begins only after tapping “Start,” allowing you to adjust the framing first.
+- You can choose whether to display the sound level, low-frequency spectrum, and date and time. Selected overlays are included in the exported MP4.
+- Adjusted video orientation and rendering to address rotation, mirroring, and overlapping overlays.
+- Moved “Flip” and “Flash” to either side of the Start button and fixed controls appearing too close to, or beyond, the edges of narrow screens.
+- Removed the aspect-ratio switch. All video recordings now use a portrait resolution of 720 × 1280 pixels in MP4 format.
+- Improved finalization and saving after recording stops to reduce waiting. Actual processing time still depends on the phone, recording length, and storage conditions.
+1.4 App Watermarks on Screenshots and Videos
+- Added a “5o5o Noise Meter” watermark to the video preview and exported recordings.
+- Added a “5o5o Noise Meter” watermark to the lower-left corner of exported screenshots to help identify their source.
+1.5 Fixes for Issues That Could Affect Recording
+- Fixed resource conflicts when starting or stopping microphone capture, switching screens, and returning from the background, reducing the risk of crashes or capture errors.
+- Fixed an issue where rapidly starting and stopping audio recording could start a new recording before the previous file had finished saving.
+- Fixed issues affecting temporary-file saving when navigating back during video recording. Pressing Back again while saving now prompts you to wait.
+- Fixed an issue where different audio and video encoder startup times could cause the first samples or frames to be lost, improving the completeness of video beginnings.
+- Fixed issues involving the Stop button, timer, and camera state after switching cameras during recording.
+- Added handling for extremely short videos, file-write failures, and insufficient memory during screenshot capture, preventing incomplete clips from being exported as normal videos.
+- Updated the About screen to consistently display the actual installed version number: 1.7.
+2. Getting Started
+1. Open the app and grant microphone permission. Grant camera permission when you first open the video screen. On older Android versions, grant storage permission if requested so files can be saved.
+2. Place the phone at the location you want to observe without blocking its microphone openings. Minimize interference from handling noise, speech, and wind blowing across the phone.
+3. Wait a few seconds, then observe the reading, spectrum, and frequency history.
+4. Tap “Screenshot,” “Record Audio,” or “Video” as needed to save a record.
+Opening the app does not automatically start saving an audio recording. Opening the video screen does not automatically start video recording either.
+3. Understanding the Numbers and Charts
+Item	Meaning
+Large dB(A) reading	An estimated sound level calculated using A-weighting and the calibration offset, useful for observing overall changes.
+Dominant frequency in Hz	A frequency currently standing out in the spectrum. Hz indicates frequency, not loudness, direction, or distance.
+Real-time spectrum	Shows the relative strength of different frequencies. The horizontal axis represents frequency; the vertical axis shows dBFS.
+Frequency history / spectrogram	Shows how frequency content changes over time, making it easier to identify persistent sounds or repeated starts and stops.
 
 
-## 许可
+The dBFS values in the spectrum and the dB(A) reading above it represent different quantities and do not need to match. A-weighting reduces the contribution of low frequencies to the overall reading. When investigating low-frequency noise, also examine the spectrum and save audio recordings.
 
-本应用为免费软件，采用"免费使用但保留署名"许可（详见 LICENSE.txt）：  
-允许个人免费安装使用，须保留"雨花石子记"署名；禁止商用、  
-禁止移除版权标识后二次打包，禁止反向分析与破解。  
-所有数据仅保存在本机，不上传任何服务器。
+The home screen and video mode use the same calculation methods, but they sample at different times. Environmental changes can therefore still produce different instantaneous readings. The small low-frequency chart in video mode displays only 0–1 kHz. Because the full-spectrum dominant frequency may exceed 1 kHz, its label may fall outside the range shown in that chart.
+4. Taking Screenshots and Recording Audio or Video
+Screenshots
+Wait for the display to stabilize, then tap “Screenshot” to save the current screen as a PNG image. For closer inspection, tap “Pause” first, take the screenshot, and then tap “Resume.”
+Audio Recording
+Tap “Record Audio” on the home screen to begin. Tap “Stop” when finished and wait for saving to complete. Audio recordings are saved as WAV files. Wait until the controls become available again before starting another recording.
+
+“Pause” freezes the display; it does not replace the recording’s “Stop” control. Keep the app in the foreground when continuous audio recording is required. Opening another screen or moving the app to the background may end and save the current recording.
+Video Recording
+1. Tap “Video” on the home screen and check the framing and orientation.
+2. Select the sound level, low-frequency spectrum, and date and time overlays as needed.
+3. Tap the red “Start” button. Once the recording indicator appears, keep the phone steady.
+4. Tap the circular button again to stop. Wait for saving to complete and return to the home screen.
+“Flip” switches between the front and rear cameras. Switching cameras during recording saves the current clip and starts a new one, so you may get multiple video files. “Flash” requires the currently selected camera to support a recording light.
+
+Pressing Back during recording ends and saves the recording. Wait while saving is in progress, and do not force-close the app. If the phone has already been calibrated, avoid changing “dB+” or “dB−” unnecessarily, because these controls also affect the home-screen reading.
+5. Where Are Saved Files Stored?
+Open the system gallery or file manager and look in the phone’s internal storage:
+File type	Folder	Format
+Screenshots	Pictures/5o5o噪音计	PNG
+Audio recordings	Music/5o5o噪音计	WAV
+On-site videos	Movies/5o5o噪音计	MP4
+
+
+The folder names above are shown exactly as they appear on the device.
+
+File names usually begin with 5o5o_. If you cannot find a file, search for this prefix in the file manager. Use the system gallery or file manager to share, rename, and organize files. Recordings captured by the app are stored locally on the phone and are not automatically uploaded to a server.
+6. Things to Know Before and After Upgrading from Version 1.5
+- Back up important screenshots, audio recordings, and videos first. Install the update over the existing version whenever possible. Do not uninstall the app or clear its data simply to upgrade.
+- Installing over an existing version requires the same package name and signing identity. If Android reports “App not installed” or a signature conflict, do not immediately uninstall the old version. First confirm the installation package’s source and the appropriate upgrade method.
+- After upgrading, check microphone and camera permissions, along with your existing theme and calibration settings. Recheck calibration when changing phones; do not assume the old phone’s settings are equally accurate on another device.
+- Phone microphones and audio processing vary. This app is intended for observing, recording, and comparing changes. It does not replace a calibrated professional sound level meter, and frequency and dB(A) readings alone cannot determine a sound source’s location or distance.
+- Testing for this release covered the main workflows on one HONOR phone running Android 16. Other devices and operating systems may still have compatibility differences.
+7. Frequently Asked Questions
+Why is the reading not changing?
+First check whether the display is paused and whether microphone permission has been granted. Close other apps using the microphone, then reopen the relevant screen.
+
+Why is the video preview black, or why does Flash do nothing?
+Check camera permission and whether another app is using the camera. Some front-facing cameras do not have a recording light. Save your current recording, then reopen the video screen and try again.
+
+Why do I need to wait after stopping?
+The app must finalize the audio and video streams and save the file. The waiting time depends on the recording length and the phone’s condition. Wait until saving is complete before starting another operation.
+
+What should I do if saving fails?
+Check available storage and permissions, and keep a record of the error message. Do not immediately uninstall the app or clear its data, as this may delete files still temporarily stored within the app.
+License
+This application is free of charge and is distributed under a “Free Use with Attribution Required” license. See LICENSE.txt for details.
+
+Free installation and use for personal purposes are permitted, provided that attribution to “雨花石子记” (Yuhua Shizi Ji) is retained. Commercial use, repackaging after removing copyright notices, reverse engineering, and cracking are prohibited.
+
+All data is stored locally on the device and is not uploaded to any server.
