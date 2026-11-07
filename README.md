@@ -8,7 +8,7 @@
 
 Use it to observe recurring hums, document changes over time, and compare recordings made at different locations under consistent conditions.
 
-**Version:** 1.7 · **Platform:** Android · **Website:** [www.5o5o.com](https://www.5o5o.com/)
+**Version:** 1.81 (in-app: 1.8.1) · **Platform:** Android · **Website:** [www.5o5o.com](https://www.5o5o.com/)
 
 [Download](#download) · [Screenshots](#screenshots) · [Quick Start](#quick-start) · [Saved Files](#saved-files) · [License](#license)
 
@@ -21,7 +21,7 @@ Use it to observe recurring hums, document changes over time, and compare record
 - **PNG screenshots:** Save the current display for later review or comparison.
 - **WAV audio recording:** Keep an audio record alongside your observations.
 - **Video with overlays:** Choose sound level, low-frequency spectrum, and date and time overlays, then save a portrait MP4 at 720 × 1280 pixels.
-- **Visual themes:** Choose Special Edition, Professional Edition, or Fluorescent Professional Edition.
+- **Visual themes:** Choose Professional Edition and Special Edition.
 - **Local storage:** Captured screenshots, audio, and videos remain on your phone.
 
 ## Screenshots
@@ -37,18 +37,20 @@ Use it to observe recurring hums, document changes over time, and compare record
   </tr>
 </table>
 
-The screenshots show the Chinese-language interface. Readings and timestamps are examples from the captured screens.
+These are real screenshots from an earlier version. Readings, timestamps, and some styling are examples and do not represent all version 1.81 screens.
 
 ## Download
 
-| Source | Link | Details |
-| --- | --- | --- |
-| **GitHub — recommended** | [yuhuashiziji/5o5onoisemeter](https://github.com/yuhuashiziji/5o5onoisemeter) | Check the repository for available versions and downloads. |
-| Official website | [Download version 1.7 APK](http://www.5o5o.com/5o5ozyj/5o5o_noise_meter-1.7.apk) | Direct Android installation package. |
-| Baidu Netdisk | [Open download page](https://pan.baidu.com/s/1ZQJsw9rmTzlJUGoBO1_LIg?pwd=5a93) | Extraction code: `5a93` |
-| Lanzou Cloud | [Open download page](https://wwall.lanzouu.com/iW2ZH4d7pcda) | Password: `awb4` |
+**Downloading, personal use, and updates are free. The current release is 1.81, displayed as 1.8.1 in the app.**
 
-If Android requests permission to install the APK, allow installation for the browser or file manager you are using, then follow the system prompts.
+- **[Download the Android APK](https://github.com/yuhuashiziji/5o5onoisemeter/releases/download/v1.8.1/5o5o_noise_meter-1.8.1.apk)**
+- [Release notes and all attachments](https://github.com/yuhuashiziji/5o5onoisemeter/releases/tag/v1.8.1) · [Latest release](https://github.com/yuhuashiziji/5o5onoisemeter/releases/latest)
+- [Detailed user guide (Chinese)](https://github.com/yuhuashiziji/5o5onoisemeter/releases/download/v1.8.1/USER-GUIDE-1.81.md)
+- [SHA-256 checksums](https://github.com/yuhuashiziji/5o5onoisemeter/releases/download/v1.8.1/SHA256SUMS-v1.8.1.txt)
+
+Only the APK is needed to install the app. GitHub's automatic “Source code” archives are repository snapshots, not installers or the latest private development source. Android 5.0 or later is required; video support depends on the device. Allow installation for your browser or file manager if prompted.
+
+This release edition excludes the independent Analysis Package edition's professional analysis package and precision observation theme. Other distribution channels may lag behind; use this GitHub Release as the current reference.
 
 ### Upgrading from an Earlier Version
 
@@ -115,19 +117,27 @@ Folder names above are shown exactly as they appear on the device. File names us
 
 Use the system gallery or file manager to share, rename, and organize recordings.
 
-## Version 1.7 Highlights
+## Version 1.81 Highlights
 
-The changes accumulated between versions 1.5 and 1.7 include:
+- Continuous video monitoring with low-resolution video at a target 5 fps.
+- Candidate impact markers, manual bookmarks, and event-based playback.
+- ZIP export of videos and event metadata, with internal detector diagnostics excluded.
+- Special Edition styling for monitoring and an updated octopus icon.
+- Fixes for session cleanup during restart and camera previews obscuring the monitoring menu.
+- Sentinel mode remains experimental; its hidden entry is not documented publicly.
 
-- A clearer Special Edition home screen and coordinated visual themes.
-- Consistent sound level and dominant frequency calculations across the home screen and video mode.
-- Video preview before recording, selectable overlays, and fixed portrait MP4 output.
-- App watermarks on exported screenshots and videos.
-- Improvements to microphone and camera resource handling, recording finalization, file saving, and error handling.
+### Continuous Video Monitoring
 
-Not every improvement was first introduced in version 1.7; this list summarizes the cumulative update period.
+1. Open the home-screen Settings menu and select continuous video monitoring. Check framing and storage.
+2. Tap Start and confirm that the recording status and timer advance.
+3. Add a manual bookmark when needed. Automatic markers are candidates for review, not sound-source identification.
+4. Stop and wait for saving to finish. Use the upper-right menu for event playback or video/event ZIP export.
+
+The menu also switches cameras and hides the preview. Hiding the preview does not stop recording. This mode records continuously with a dim, awake screen; keep its page open. It is not event-triggered video and does not promise reliable overnight recording while locked. Low-frame-rate footage prioritizes documentation over fast-action detail. Review private audio and images before sharing exports.
 
 ## Measurement and Compatibility Notes
+
+The real-time dB(A) estimate is smoothed; it is not a strict whole-session LAeq.
 
 Phone microphones and audio processing vary between devices. The app is intended for observation, documentation, and comparison; it does not replace a calibrated professional sound level meter.
 
@@ -135,7 +145,7 @@ Phone microphones and audio processing vary between devices. The app is intended
 - A calibration made in one environment does not make the reading constant elsewhere.
 - For meaningful comparisons, keep the position, orientation, settings, and observation conditions consistent.
 - Frequency and dB(A) readings alone cannot determine a sound source's identity, direction, or distance.
-- Version 1.7 testing covered the main workflows on one HONOR phone running Android 16. Compatibility may vary on other devices.
+- Version 1.81 has undergone partial single-device smoke checks. Full regression, overnight use, system interruptions, and cross-device compatibility remain incompletely verified.
 
 ## Troubleshooting
 
